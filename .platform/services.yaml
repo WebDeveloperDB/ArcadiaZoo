@@ -4,5 +4,5 @@ db:
 
 
 mongodb:
-    type: mongodb:8.0.4
-    disk: 2048
+    type: mongodb:6.0
+    disk: 512
