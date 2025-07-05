@@ -9,4 +9,3 @@
 "http://{all}/":
     type: redirect
     to: "https://{all}/"
-
