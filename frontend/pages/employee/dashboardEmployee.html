@@ -1,0 +1,80 @@
+<div class="container">
+    <h1>Espace Employé</h1>
+</div>
+
+<section id="animal-list">
+    <h3>Liste der Tiere</h3>
+    <div class="row">
+        <div class="col-md-4 animal-card" data-animal-id="1">
+            <div class="card">
+                <img src="images/tiger.jpg" alt="Tiger" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Tiger</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 animal-card" data-animal-id="2">
+            <div class="card">
+                <img src="images/elephant.jpg" alt="Elefant" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Elefant</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="feed-animal">
+    <h3>Tier füttern</h3>
+    <form id="feed-animal-form">
+        <label for="feed-date">Datum:</label>
+        <input type="date" id="feed-date" required>
+        
+        <label for="feed-time">Uhrzeit:</label>
+        <input type="time" id="feed-time" required>
+        
+        <label for="feed-food">Nahrung:</label>
+        <input type="text" id="feed-food" required>
+        
+        <label for="feed-quantity">Menge (kg):</label>
+        <input type="number" id="feed-quantity" required>
+        
+        <button type="submit" class="btn btn-primary">Fütterung hinzufügen</button>
+    </form>
+</section>
+
+<section id="animal-details">
+    <h3>Tierdetails</h3>
+    <div id="animal-info"></div>
+</section>
+
+
+
+
+<h5>À valider</h5>
+<div id="pending-avis-list"></div>
+<hr>
+<h5>Validés</h5>
+<div id="validated-avis-list"></div>
+
+
+
+
+<!-- Modal für Validierung/Ablehnung -->
+<div class="modal fade" id="avisModal" tabindex="-1" aria-labelledby="avisModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="avisModalLabel">Validation de l'avis</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+      <div class="modal-body">
+        <p id="avisModalContent"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="validate-avis-btn" class="btn btn-success">Valider</button>
+        <button type="button" id="reject-avis-btn" class="btn btn-danger">Rejeter</button>
+      </div>
+    </div>
+  </div>
+</div>
