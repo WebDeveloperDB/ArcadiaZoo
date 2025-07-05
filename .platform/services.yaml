@@ -1,0 +1,8 @@
+db:
+    type: postgresql:16
+    disk: 1024
+
+
+mongodb:
+    type: mongodb:8.0.4
+    disk: 2048
