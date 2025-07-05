@@ -5,6 +5,6 @@ db:
 
 
 mongodb:
-    type: mongodb:6.0
+    type: mongodb:5.0
     disk: 512
 
