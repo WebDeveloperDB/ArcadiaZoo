@@ -2,7 +2,7 @@
     type: upstream
     upstream: "frontend:http"
 
-"/api/":
+"https://{default}/api/":
     type: upstream
     upstream: "backend:http"
 
