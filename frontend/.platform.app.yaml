@@ -1,6 +1,5 @@
 name: frontend
 type: "static"
-static_version: 1.0
 
 web:
     locations:
