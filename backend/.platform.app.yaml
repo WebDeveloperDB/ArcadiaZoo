@@ -27,7 +27,7 @@ relationships:
 variables:
     env:
         APP_ENV: "prod"
-        # Andere Symfony ENV falls nötig
+        MONGODB_DATABASE: "arcadiazoo_mongo_db"
 
 crons:
     symfony-cron:
