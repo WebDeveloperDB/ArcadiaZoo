@@ -36,9 +36,6 @@ web:
 mounts:
     "/var/cache": { source: local, source_path: var/cache }
 
-dependencies:
-    php:
-        mongodb: "*"
 
 relationships:
     database: "db:postgresql"
