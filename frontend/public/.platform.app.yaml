@@ -1,5 +1,4 @@
 name: frontend
-stack: "static"
 web:
     locations:
         "/":
