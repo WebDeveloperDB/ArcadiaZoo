@@ -1,5 +1,6 @@
 name: frontend
 stack: "apache"
+stack: "static"
 web:
     locations:
         "/":
