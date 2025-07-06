@@ -1,5 +1,5 @@
 name: frontend
-type: "static 3.0"
+type: "static:3.0"
 web:
     locations:
         "/":
