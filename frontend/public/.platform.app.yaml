@@ -1,5 +1,5 @@
 name: frontend
-stack: "container"
+stack: "apache"
 web:
     locations:
         "/":
