@@ -1,4 +1,5 @@
 name: frontend
+type: "nodejs:18" 
 web:
     locations:
         "/":
