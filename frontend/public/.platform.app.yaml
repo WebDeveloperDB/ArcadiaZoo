@@ -1,5 +1,6 @@
 name: frontend
+stack: "container"
 web:
     locations:
         "/":
-            root: "."
+            root: "public"
