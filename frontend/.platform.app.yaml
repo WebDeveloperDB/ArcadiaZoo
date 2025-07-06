@@ -1,8 +1,6 @@
 name: frontend
 type: "static"
-
 web:
     locations:
         "/":
             root: "."
-            allow: true

@@ -2,10 +2,10 @@
     type: upstream
     upstream: "frontend:http"
 
-"https://{default}/api/":
+"https://{default}/api":
     type: upstream
     upstream: "backend:http"
 
-"http://{all}/":
+"http://{default}/":
     type: redirect
-    to: "https://{all}/"
+    to: "https://{default}/"
