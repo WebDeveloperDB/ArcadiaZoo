@@ -2,6 +2,10 @@ name: backend
 type: "php:8.2"
 disk: 2048
 
+runtime:
+    extensions:
+        - mongodb
+
 web:
     locations:
         "/":
