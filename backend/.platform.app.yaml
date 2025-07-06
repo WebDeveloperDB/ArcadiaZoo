@@ -42,8 +42,6 @@ relationships:
     mongo: "mongodb:mongodb"
 
 variables:
-    env:
-        APP_ENV: "prod"
         MONGODB_DATABASE: "arcadiazoo_mongo_db"
         MONGODB_URL: "mongodb://Bajram:Vfbstuttgart@arcadiazoo-mongodb:27017/arcadiazoo_mongo_db?authSource=admin"
     
