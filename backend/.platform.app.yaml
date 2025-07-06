@@ -29,6 +29,7 @@ variables:
         APP_ENV: "prod"
         MONGODB_DATABASE: "arcadiazoo_mongo_db"
         MONGODB_URL: "mongodb://Bajram:Vfbstuttgart@arcadiazoo-mongodb:27017/arcadiazoo_mongo_db?authSource=admin"
+        DATABASE_URL=: "postgresql://bajram:Vfbstuttgart@127.0.0.1:5432/arcadiaZoo?serverVersion=16&charset=utf8"
 
 crons:
     symfony-cron:
