@@ -1,12 +1,16 @@
 name: backend
 type: "php:8.2"
-disk: 2048
 
 web:
     locations:
         "/":
             root: "public"
-            allow: true
+            passthru: "/index.php"
+            index:
+                - index.php
+            scripts: true
+            expires: -1
+
 
 mounts:
     "/var/uploads": "shared:files"
