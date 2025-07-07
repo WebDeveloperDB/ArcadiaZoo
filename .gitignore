@@ -1,26 +1,24 @@
-frontend/public/node_modules/vendor
-
-###> symfony/framework-bundle ###
-/.env.local
+# Ignoriere globale Entwicklungsdateien
+.env.local
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /var/
-/vendor/
-###< symfony/framework-bundle ###
+# Das ist wichtig:
+vendor/
+node_modules/
 
-###> phpunit/phpunit ###
+# Optional für frontend/backend im Monorepo (Schutz bei Unterprojekten)
+frontend/node_modules/
+frontend/vendor/
+backend/node_modules/
+backend/vendor/
+
+# Tests und Cache
 /phpunit.xml
 .phpunit.result.cache
-###< phpunit/phpunit ###
 
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
-
-###> symfony/asset-mapper ###
+# Asset Mapper & Assets
 /public/assets/
 /assets/vendor/
-###< symfony/asset-mapper ###
