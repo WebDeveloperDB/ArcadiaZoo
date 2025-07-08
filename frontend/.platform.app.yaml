@@ -6,8 +6,6 @@ web:
             root: "public"
             index: ["index.html"]
             allow: true
-            # Das ist der Schlüssel!
-            fallback: "index.html"
         "/api":
             passthru: true
 
