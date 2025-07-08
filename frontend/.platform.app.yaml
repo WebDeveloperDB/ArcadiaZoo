@@ -1,12 +1,16 @@
 name: frontend
 type: "php:8.2"
+
+build:
+    flavor: none
+    commands:
+        01-npm-install: "npm install"
+        02-scss-build: "node-sass public/scss/ public/css/ --output-style compressed --recursive"
+
 web:
     locations:
         "/":
             root: "public"
             index: ["index.html"]
             allow: true
-        "/api":
-            passthru: true
-
 
