@@ -10,7 +10,7 @@ web:
     locations:
         "/":
             root: "public"
-            index: ["index.html"]
+            index: ["index.php", "index.html"]
             passthru: "/index.php"
             allow: true
 

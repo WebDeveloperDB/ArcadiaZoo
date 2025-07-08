@@ -1,3 +1,6 @@
 <?php
-// Always serve index.html
-readfile('index.html');
+if (php_sapi_name() !== 'cli-server') {
+    // Liefere immer index.html aus (für SPA-Fallback)
+    readfile(__DIR__ . '/index.html');
+    exit;
+}
