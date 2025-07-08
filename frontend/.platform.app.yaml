@@ -4,5 +4,11 @@ web:
     locations:
         "/":
             root: "public"
-            allow: true
+            index: [ "index.html" ]
+            # Füge das dazu:
+            try_files: [ "$uri", "/index.html" ]
+        # Beispiel für API:
+        "/api":
+            passthru: true
+
 
