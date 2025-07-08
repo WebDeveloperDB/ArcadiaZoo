@@ -1,16 +1,8 @@
 "https://{default}/":
     type: upstream
     upstream: "frontend:http"
-    # SPA/HTML5 fallback:
     cache:
         enabled: false
-    scripts:
-        # Rewrites für alle Routen außer /api und statischen Dateien
-        99-spa-fallback: |
-            if (!file_exists('public' . $_SERVER['REQUEST_URI']) && !preg_match('#^/api#', $_SERVER['REQUEST_URI'])) {
-                return ['public/index.html', 200];
-            }
-
 
 "https://{default}/api":
     type: upstream
@@ -19,3 +11,5 @@
 "http://{default}/":
     type: redirect
     to: "https://{default}/"
+
+
