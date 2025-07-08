@@ -6,11 +6,11 @@ hooks:
         npm install
         npx node-sass public/scss/ -o public/css/ --output-style compressed --recursive
 
-
 web:
     locations:
         "/":
             root: "public"
             index: ["index.html"]
+            passthru: "/index.php"
             allow: true
 
