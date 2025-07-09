@@ -20,7 +20,7 @@ if (avisForm) {
     const data = { pseudo, commentaire };
 
     try {
-      const res = await fetch("http://localhost:8000/api/avis", {
+      const res = await fetch("/api/avis", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -51,7 +51,7 @@ if (avisForm) {
 fetchValidatedAvis();
 
 async function fetchValidatedAvis() {
-  const res = await fetch("http://localhost:8000/api/avis/validated");
+  const res = await fetch("/api/avis/validated");
   if (!res.ok) return;
   const avisList = await res.json();
   const listDiv = document.getElementById("avis-list");
