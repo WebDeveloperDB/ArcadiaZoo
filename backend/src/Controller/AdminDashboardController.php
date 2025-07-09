@@ -51,9 +51,6 @@ class AdminDashboardController extends AbstractController
         $this->manager->persist($user);
         $this->manager->flush();
 
-         // Envoi de l'email
-         
-         $this->mailerService->sendUserCreationEmail($user->getEmail(), "Bienvenue", "Votre compte a été créé avec succès. Contactez l'admin pour obtenir votre mot de passe.");
 
 
         return new JsonResponse(
