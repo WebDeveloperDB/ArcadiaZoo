@@ -44,8 +44,6 @@ relationships:
 variables:
     env:
         MONGODB_DATABASE: "arcadiazoo_mongo_db"
-        MONGODB_URL: ""
-        DATABASE_URL: ""
     
 
 hooks:
