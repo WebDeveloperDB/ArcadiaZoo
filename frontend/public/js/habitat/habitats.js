@@ -28,7 +28,7 @@ async function handleCreateHabitat(e) {
   const formData = new FormData(form);
 
   try {
-    const response = await fetch("http://localhost:8000/api/habitats", {
+    const response = await fetch("/api/habitats", {
       method: "POST",
       body: formData,
     });
@@ -59,7 +59,7 @@ async function handleEditHabitat(e) {
   formData.append("_method", "PUT");
 
   try {
-    const response = await fetch(`http://localhost:8000/api/habitats/${id}`, {
+    const response = await fetch(`/api/habitats/${id}`, {
       method: "POST",
       body: formData,
     });
@@ -84,7 +84,7 @@ async function handleEditHabitat(e) {
 function deleteHabitat(id) {
   if (!confirm("Supprimer vraiment l’habitat ?")) return;
 
-  fetch(`http://localhost:8000/api/habitats/${id}`, {
+  fetch(`/api/habitats/${id}`, {
     method: "DELETE",
   })
     .then(res => {
@@ -128,7 +128,7 @@ async function handleCreateAnimal(e) {
   }
 
   try {
-    const response = await fetch("http://localhost:8000/api/animals", {
+    const response = await fetch("/api/animals", {
       method: "POST",
       body: formData,
     });
@@ -163,7 +163,7 @@ async function handleEditAnimal(e) {
   formData.append("_method", "PUT");
 
   try {
-    const response = await fetch(`http://localhost:8000/api/animals/${id}`, {
+    const response = await fetch(`/api/animals/${id}`, {
       method: "POST",
       body: formData,
     });
@@ -188,7 +188,7 @@ async function handleEditAnimal(e) {
 function deleteAnimal(id) {
   if (!confirm("L'animal vraiment supprimer ?")) return;
 
-  fetch(`http://localhost:8000/api/animals/${id}`, {
+  fetch(`/api/animals/${id}`, {
     method: "DELETE",
   })
     .then(res => {
@@ -204,7 +204,7 @@ function deleteAnimal(id) {
 
 // 📊 MongoDB: Consultation statistique
 function trackAnimalConsultation(animalId) {
-  fetch("http://localhost:8000/api/consultations", {
+  fetch("/api/consultations", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ animalId }),
@@ -220,7 +220,7 @@ function trackAnimalConsultation(animalId) {
 //  Affichage des habitats
 async function fetchAndDisplayHabitats() {
   try {
-    const res = await fetch("http://localhost:8000/api/habitats");
+    const res = await fetch("/api/habitats");
     if (!res.ok) throw new Error("Erreur lors du chargement des habitats");
     const habitats = await res.json();
 
@@ -232,7 +232,7 @@ async function fetchAndDisplayHabitats() {
       
       let habitatImgHtml = "";
       if (habitat.images && habitat.images.length > 0) {
-        const habitatImgUrl = `http://localhost:8000${habitat.images[0].url.replace(/\\/g, "")}`;
+        const habitatImgUrl = `${habitat.images[0].url.replace(/\\/g, "")}`;
         habitatImgHtml = `<img src="${habitatImgUrl}" alt="${habitat.nom}" class="img-fluid mb-2 rounded shadow-sm d-block mx-auto" style="max-height: 220px; width: 100%; object-fit: cover;">`;
       }
 
@@ -243,7 +243,7 @@ async function fetchAndDisplayHabitats() {
           // Animal image 
           let animalImgHtml = "";
           if (animal.images && animal.images.length > 0) {
-            const animalImgUrl = `http://localhost:8000${animal.images[0].url.replace(/\\/g, "")}`;
+            const animalImgUrl = `${animal.images[0].url.replace(/\\/g, "")}`;
             animalImgHtml = `<img src="${animalImgUrl}" alt="${animal.prenom}" class="rounded me-3" style="width: 100px; height: 80px; object-fit: cover; box-shadow: 0 2px 10px #0001;">`;
           }
           return `
@@ -317,7 +317,7 @@ function activateDynamicButtons() {
       form.dataset.id = id;
 
       try {
-        const res = await fetch(`http://localhost:8000/api/habitats/${id}`);
+        const res = await fetch(`/api/habitats/${id}`);
         if (!res.ok) throw new Error("Erreur lors du chargement de l'habitat");
         const habitat = await res.json();
 
@@ -327,7 +327,7 @@ function activateDynamicButtons() {
         if (habitat.images && habitat.images.length > 0) {
           const imgPreview = form.querySelector("#edit-habitat-image-preview");
           if (imgPreview) {
-            imgPreview.src = `http://localhost:8000${habitat.images[0].url.replace(/\\/g, "")}`;
+            imgPreview.src = `${habitat.images[0].url.replace(/\\/g, "")}`;
             imgPreview.style.display = "block";
           }
         }
@@ -350,7 +350,7 @@ function activateDynamicButtons() {
       form.dataset.id = id;
 
       try {
-        const res = await fetch(`http://localhost:8000/api/animals/${id}`);
+        const res = await fetch(`/api/animals/${id}`);
         if (!res.ok) throw new Error("Erreur lors du chargement de l'animal");
         const animal = await res.json();
 
@@ -363,7 +363,7 @@ function activateDynamicButtons() {
         if (animal.images && animal.images.length > 0) {
           const imgPreview = form.querySelector("#edit-animal-image-preview");
           if (imgPreview) {
-            imgPreview.src = `http://localhost:8000${animal.images[0].url.replace(/\\/g, "")}`;
+            imgPreview.src = `${animal.images[0].url.replace(/\\/g, "")}`;
             imgPreview.style.display = "block";
           }
         }

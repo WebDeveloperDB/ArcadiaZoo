@@ -1,6 +1,6 @@
 
 async function loadPendingAvis() {
-  const res = await fetchWithAuth("http://localhost:8000/api/avis/pending");
+  const res = await fetchWithAuth("/api/avis/pending");
   const pendingAvisList = document.getElementById("pending-avis-list");
   if (!pendingAvisList) return;
   if (!res.ok) {
@@ -30,7 +30,7 @@ async function loadPendingAvis() {
   loadPendingAvis();
 
 async function validateAvis(id) {
-  const res = await fetchWithAuth(`http://localhost:8000/api/avis/${id}/validate`, { method: "POST" });
+  const res = await fetchWithAuth(`/api/avis/${id}/validate`, { method: "POST" });
   if (res.ok) {
     loadPendingAvis();
   } else {
@@ -39,7 +39,7 @@ async function validateAvis(id) {
 }
 
 async function deleteAvis(id) {
-  const res = await fetchWithAuth(`http://localhost:8000/api/avis/${id}`, { method: "DELETE" });
+  const res = await fetchWithAuth(`/api/avis/${id}`, { method: "DELETE" });
   if (res.ok) {
     loadPendingAvis();
   } else {

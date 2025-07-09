@@ -3,7 +3,7 @@ window.addEventListener("load", () => {
   async function loadServices() {
     const token = getToken();
     try {
-      const response = await fetch("http://localhost:8000/api/services", {
+      const response = await fetch("/api/services", {
         headers: {
           "X-AUTH-TOKEN": token
         }
@@ -28,7 +28,7 @@ window.addEventListener("load", () => {
 
       let imagesHtml = "";
       if (service.images && service.images.length > 0) { 
-        imagesHtml = service.images.map(img => `<img src="http://localhost:8000${img.url}" alt="Image" style="max-width: 500px;">`).join("");
+        imagesHtml = service.images.map(img => `<img src="${img.url}" alt="Image" style="max-width: 500px;">`).join("");
       }
 
       card.innerHTML = `
@@ -74,7 +74,7 @@ window.addEventListener("load", () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/services", {
+      const response = await fetch("/api/services", {
         method: "POST",
         headers: {
           "X-AUTH-TOKEN": token
@@ -113,7 +113,7 @@ window.addEventListener("load", () => {
   }
 
   try {
-    const response = await fetch(`http://localhost:8000/api/services/${id}`, {
+    const response = await fetch(`/api/services/${id}`, {
       method: "POST", 
       headers: {
         "X-AUTH-TOKEN": token
@@ -140,7 +140,7 @@ window.addEventListener("load", () => {
       if (!confirm("Supprimer ce service ?")) return;
 
       const token = getToken();
-      fetch(`http://localhost:8000/api/services/${id}`, {
+      fetch(`/api/services/${id}`, {
         method: "DELETE",
         headers: {
           "X-AUTH-TOKEN": token

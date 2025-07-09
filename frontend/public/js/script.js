@@ -2,7 +2,7 @@ const tokenCookieName = "accesstoken";
 const RoleCookieName = "role";
 const signoutBtn = document.getElementById("signout-btn");
 
-// ⬇️ Token und Rolle holst du zentral!
+// Token und Rolle holst du zentral!
 function getToken() {
     return getCookie(tokenCookieName);
 }
@@ -50,7 +50,7 @@ function isConnected() {
     return getToken() !== null;
 }
 
-// ⬇️ Allgemeine Fetch-Funktion mit Token
+// Allgemeine Fetch-Funktion mit Token
 async function fetchWithAuth(url, options = {}) {
     const token = getToken();
     const headers = {
@@ -60,7 +60,7 @@ async function fetchWithAuth(url, options = {}) {
     return fetch(url, { ...options, headers });
 }
 
-// ⬇️ Funktion um Elemente je nach Rolle ein- oder auszublenden
+// Funktion um Elemente je nach Rolle ein- oder auszublenden
 function showAndHideElementsForRoles() {
     const userConnected = isConnected();
     const role = getRole();
@@ -100,7 +100,7 @@ function showAndHideElementsForRoles() {
     console.log("Token utilisé pour charger les habitats :", getToken());
 }
 
-// ⬇️ EventListener für das Signout-Button
+// EventListener für das Signout-Button
 signoutBtn.addEventListener("click", signout);
 
 

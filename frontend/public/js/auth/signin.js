@@ -4,7 +4,7 @@ document.getElementById("btnSignin").addEventListener("click", async () => {
 
     console.log("Tentative de connexion avec :", email, password); // Vérifie que les valeurs sont bien récupérées
 
-    const response = await fetch("http://localhost:8000/api/login", {
+    const response = await fetch("/api/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

@@ -13,7 +13,7 @@ async function submitContactForm(event) {
 
     try {
         // Besucher kein token
-        const response = await fetch("http://localhost:8000/api/contact", {
+        const response = await fetch("/api/contact", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title, description, email })
@@ -36,7 +36,7 @@ async function submitContactForm(event) {
 async function fetchContactRequests() {
     try {
   
-        const response = await fetchWithAuth("http://localhost:8000/api/contact/requests");
+        const response = await fetchWithAuth("/api/contact/requests");
         if (!response.ok) {
             throw new Error("Erreur lors du chargement (Status: " + response.status + ")");
         }
@@ -88,7 +88,7 @@ async function deleteContactRequest(id) {
     if (!confirm("Demande wirklich löschen?")) return;
     try {
         const token = getToken();
-        const response = await fetch(`http://localhost:8000/api/contact/requests/${id}`, {
+        const response = await fetch(`/api/contact/requests/${id}`, {
             method: 'DELETE',
             headers: {
           "X-AUTH-TOKEN": token
@@ -118,7 +118,7 @@ window.sendReply = async function() {
 
     try {
         
-        const response = await fetchWithAuth("http://localhost:8000/api/contact/reply", {
+        const response = await fetchWithAuth("/api/contact/reply", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, message })
