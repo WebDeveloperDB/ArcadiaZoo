@@ -22,7 +22,7 @@ document.getElementById("btnSignin").addEventListener("click", async () => {
         console.log("Connexion réussie !");
         setToken(data.apiToken);
         setCookie("role", data.roles[0], 7);
-        window.location.href = "/"; // Redirige vers le dashboard
+        window.location.href = "/"; 
     } else {
         alert("Erreur de connexion: " + data.message);
     }

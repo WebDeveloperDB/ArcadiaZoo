@@ -9,8 +9,7 @@ export const allRoutes = [
     new Route("/habitats", "Nos Habitats", "/pages/habitat/habitats.html", [], "/js/habitat/habitats.js"),
     new Route("/signin", "Connexion", "/pages/auth/signin.html", ["disconnected"], "/js/auth/signin.js"),
     new Route("/contact", "Contact", "/pages/contact.html", [], "/js/contact/contact.js"),
-    new Route("/account", "Les comptes", "/pages/auth/account.html", ["admin"]),
-    new Route("/adminDashboard", "Dashboard Admin", "/pages/admin/dashboardAdmin.html", ["admin"], "/js/admin/dashboardAdmin.js"),
-    new Route("/employeeDashboard", "Dashboard Employé", "/pages/employee/dashboardEmployee.html", ["employee"], "/js/employee/dashboardEmployee.js"),
-    new Route("/vetDashboard", "Dashboard Vétérinaire", "/pages/vet/dashboardVeterinaire.html", ["vet"], "/js/vet/dashboardVeterinaire.js"),
+    new Route("/account", "Les comptes", "/pages/auth/account.html", ["ROLE_ADMIN"]),
+    new Route("/adminDashboard", "Dashboard Admin", "/pages/admin/dashboardAdmin.html", ["ROLE_ADMIN"], "/js/admin/dashboardAdmin.js"),
+    new Route("/employeeDashboard", "Dashboard Employé", "/pages/employee/dashboardEmployee.html", ["ROLE_EMPLOYEE"], "/js/employee/dashboardEmployee.js"),
 ];
