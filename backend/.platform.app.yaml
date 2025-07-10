@@ -61,12 +61,13 @@ hooks:
         
         NODE_VERSION=22 symfony-build
 
-        mkdir -p public/uploads/images
 
     deploy: |
         set -x -e
 
         symfony-deploy
+
+        mkdir -p public/uploads/images
 
 
 
