@@ -41,7 +41,6 @@ web:
 
 mounts:
     "/public/uploads": "shared:files/uploads"
-    "/var/cache": { source: local, source_path: var/cache }
 
 
 relationships:
