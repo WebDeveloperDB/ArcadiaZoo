@@ -37,9 +37,6 @@ web:
             root: "public"
             passthru: false
 
-mounts:
-    "/public/uploads": "shared:files/uploads"
-
 
 
 
