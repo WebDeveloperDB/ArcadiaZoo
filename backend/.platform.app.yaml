@@ -27,8 +27,9 @@ web:
     locations:
         "/":
             root: "public"
-            index: ["index.php", "index.html"]
-            try_files: ["{path}"]
+            index:
+                - "index.php"
+                - "index.html"
         "/uploads/":
             allow: true
             root: "public"
