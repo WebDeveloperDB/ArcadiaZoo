@@ -27,11 +27,13 @@ web:
     locations:
         "/":
             root: "public"
-            expires: 1h
-            passthru: "/index.php"
-            index:
-                - index.php
-            scripts: true
+            index: ["index.php", "index.html"]
+            try_files: ["{path}"]
+        "/uploads/":
+            allow: true
+            root: "public"
+            passthru: false
+
 
 mounts:
     "/var/cache": { source: local, source_path: var/cache }
