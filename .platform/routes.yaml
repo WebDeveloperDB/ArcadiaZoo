@@ -12,7 +12,7 @@
     type: upstream
     upstream: "backend:http"
     cache:
-        enabled: true
+        enabled: false
 
 "http://{default}/":
     type: redirect
