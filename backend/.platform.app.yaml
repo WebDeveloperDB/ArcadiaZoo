@@ -27,13 +27,20 @@ web:
     locations:
         "/":
             root: "public"
+            expires: 1h
+            passthru: "/index.php"
             index:
-                - "index.php"
-                - "index.html"
+                - index.php
+            scripts: true
         "/uploads/":
             allow: true
             root: "public"
             passthru: false
+
+mounts:
+    "/public/uploads": "shared:files/uploads"
+
+
 
 
 mounts:
