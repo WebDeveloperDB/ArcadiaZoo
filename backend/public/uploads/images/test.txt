@@ -1,0 +1,1 @@
+echo "hello" > /public/uploads/images/test.txt
