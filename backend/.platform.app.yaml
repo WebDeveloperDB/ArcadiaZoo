@@ -39,8 +39,8 @@ web:
 
 
 
-
 mounts:
+    "/public/uploads": "shared:files/uploads"
     "/var/cache": { source: local, source_path: var/cache }
 
 
@@ -60,6 +60,8 @@ hooks:
         curl -fs https://get.symfony.com/cloud/configurator | bash
         
         NODE_VERSION=22 symfony-build
+
+        mkdir -p public/uploads/images
 
     deploy: |
         set -x -e
