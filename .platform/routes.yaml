@@ -8,6 +8,12 @@
     type: upstream
     upstream: "backend:http"
 
+"https://{default}/uploads/":
+    type: upstream
+    upstream: "backend:http"
+    cache:
+        enabled: true
+
 "http://{default}/":
     type: redirect
     to: "https://{default}/"
