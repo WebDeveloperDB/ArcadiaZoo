@@ -14,4 +14,5 @@ backend/.phpunit.result.cache
 
 # Frontend
 frontend/node_modules/
-frontend/vendor/
+frontend/public/node_modules/
+frontend/public/vendor/
