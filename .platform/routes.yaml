@@ -1,0 +1,21 @@
+"https://{default}/":
+    type: upstream
+    upstream: "frontend:http"
+    cache:
+        enabled: false
+
+"https://{default}/api":
+    type: upstream
+    upstream: "backend:http"
+
+"https://{default}/uploads/":
+    type: upstream
+    upstream: "backend:http"
+    cache:
+        enabled: false
+
+"http://{default}/":
+    type: redirect
+    to: "https://{default}/"
+
+
