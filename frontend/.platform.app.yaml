@@ -3,8 +3,10 @@ type: "php:8.2"
 
 hooks:
     build: |
+        set -x -e
         npm install
         npx node-sass public/scss/ -o public/css/ --output-style compressed --recursive
+        npm run build
 
 web:
     locations:
