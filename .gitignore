@@ -5,6 +5,8 @@ backend/.env.*.local
 backend/config/secrets/prod/prod.decrypt.private.php
 backend/public/bundles/
 backend/var/
+/var/cache/
+/var/sessions/
 backend/vendor/
 backend/public/assets/
 backend/assets/vendor/
