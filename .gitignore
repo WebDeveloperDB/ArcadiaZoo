@@ -11,6 +11,8 @@ backend/assets/vendor/
 backend/public/uploads/
 backend/phpunit.xml
 backend/.phpunit.result.cache
+backend/Dockerfile
+backend/docker-compose.yml
 
 # Frontend
 frontend/node_modules/
