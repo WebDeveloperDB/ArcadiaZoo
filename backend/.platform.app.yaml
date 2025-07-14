@@ -48,9 +48,6 @@ relationships:
     database: "db:postgresql"
     mongo: "mongodb:mongodb"
 
-variables:
-    env:
-        MONGODB_URL: "mongodb://${mongo.username}:${mongo.password}@${mongo.host}:${mongo.port}/${mongo.path}?authSource=admin"
     
 
 hooks:
