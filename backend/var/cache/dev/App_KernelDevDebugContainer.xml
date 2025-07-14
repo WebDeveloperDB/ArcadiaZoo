@@ -455,16 +455,6 @@
         <argument>Test de l'envoi d'un email</argument>
       </call>
     </service>
-    <service id="App\Command\TestMongoCommand" class="App\Command\TestMongoCommand" public="true" autowire="true" autoconfigure="true">
-      <tag name="console.command"/>
-      <tag name="container.no_preload"/>
-      <call method="setName">
-        <argument>app:test-mongo</argument>
-      </call>
-      <call method="setDescription">
-        <argument>Test de la connexion à MongoDB et insertion d’un document.</argument>
-      </call>
-    </service>
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
@@ -6753,7 +6743,7 @@
       <call method="add">
         <argument type="service" id=".security.request_matcher.TCHizBc"/>
         <argument type="collection">
-          <argument>PUBLIC_ACCESS</argument>
+          <argument>ROLE_EMPLOYEE</argument>
         </argument>
         <argument>null</argument>
       </call>
@@ -8275,8 +8265,6 @@
     </service>
     <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\MailerTestCommand" class="App\Command\MailerTestCommand" public="true" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Command\MailerTestCommand" class="App\Command\MailerTestCommand" public="true" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\TestMongoCommand" class="App\Command\TestMongoCommand" public="true" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Command\TestMongoCommand" class="App\Command\TestMongoCommand" public="true" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminDashboardController" class="App\Controller\AdminDashboardController" public="true" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminDashboardController" class="App\Controller\AdminDashboardController" public="true" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminDashboardController" class="App\Controller\AdminDashboardController" public="true" autowire="true" autoconfigure="true" abstract="true"/>
@@ -10113,13 +10101,6 @@
       <argument>false</argument>
       <argument type="service_closure" id="App\Command\MailerTestCommand"/>
     </service>
-    <service id=".App\Command\TestMongoCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
-      <argument>app:test-mongo</argument>
-      <argument type="collection"/>
-      <argument>Test de la connexion à MongoDB et insertion d’un document.</argument>
-      <argument>false</argument>
-      <argument type="service_closure" id="App\Command\TestMongoCommand"/>
-    </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
       <argument type="collection"/>
@@ -10806,10 +10787,9 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.M0fbwvM"/>
+      <argument type="service" id=".service_locator.uvMWDRz"/>
       <argument type="collection">
         <argument key="mailer:test">console.command.mailer_test</argument>
-        <argument key="app:test-mongo">App\Command\TestMongoCommand</argument>
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
         <argument key="cache:clear">console.command.cache_clear</argument>
@@ -10939,11 +10919,10 @@
         <argument key="make:webhook">maker.auto_command.make_webhook</argument>
       </argument>
     </service>
-    <service id=".service_locator.M0fbwvM" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.uvMWDRz" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Command\MailerTestCommand" type="service_closure" id=".App\Command\MailerTestCommand.lazy"/>
-        <argument key="App\Command\TestMongoCommand" type="service_closure" id=".App\Command\TestMongoCommand.lazy"/>
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
         <argument key="console.command.assets_install" type="service_closure" id=".console.command.assets_install.lazy"/>
         <argument key="console.command.cache_clear" type="service_closure" id=".console.command.cache_clear.lazy"/>
