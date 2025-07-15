@@ -13,10 +13,11 @@ runtime:
         - mongodb
         
 
-#variables:
-#    php:
-#        # uncomment on PHP 7.4+
-#        #opcache.preload: config/preload.php
+variables:
+    env:
+        DATABASE_URL: 'sqlite:////tmp/data.db'
+        MONGODB_URL: 'mongodb://127.0.0.1:27017'
+        MONGODB_DATABASE: 'app'
 
 build:
     flavor: none
@@ -32,16 +33,11 @@ web:
             index:
                 - index.php
             scripts: true
-        "/uploads/":
+        "/uploads":
             allow: true
             root: "public"
             passthru: false
 
-variables:
-    env:
-        DATABASE_URL: 
-        MONGODB_URL: 
-        MONGODB_DATABASE: 
 
 mounts:
     "/public/uploads": "shared:files/uploads"
@@ -65,9 +61,9 @@ hooks:
 
     deploy: |
         set -x -e
-        bin/console cache:clear
-        bin/console doctrine:migrations:migrate --no-interaction
+
         symfony-deploy
+
         mkdir -p public/uploads/images
 
 
