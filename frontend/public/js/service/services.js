@@ -1,4 +1,5 @@
-window.addEventListener("load", () => {
+
+alert("Submit ausgelöst!");
   // Fonction pour charger et afficher tous les services
   async function loadServices() {
     const token = getToken();
@@ -169,8 +170,6 @@ window.addEventListener("load", () => {
   }
 
   loadServices();
-});
-
 
 
 
