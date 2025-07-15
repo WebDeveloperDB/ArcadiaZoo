@@ -39,9 +39,9 @@ web:
 
 variables:
     env:
-        MONGODB_URL=${MONGODB_URL}
-        DATABASE_URL=${DATABASE_URL}
-        MONGODB_DATABASE=${MONGODB_DATABASE}
+        DATABASE_URL: 
+        MONGODB_URL: 
+        MONGODB_DATABASE: 
 
 mounts:
     "/public/uploads": "shared:files/uploads"
