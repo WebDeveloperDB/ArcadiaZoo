@@ -11,12 +11,13 @@ runtime:
         - iconv
         - pdo_pgsql
         - mongodb
+        
 
 variables:
-    php:
-        upload_max_filesize: 20M
-        post_max_size: 20M
-
+    env:
+        DATABASE_URL="postgresql://bajram:Vfbstuttgart@127.0.0.1:5432/arcadiaZoo?serverVersion=16&charset=utf8"
+        MONGODB_URL="mongodb://Bajram:Vfbstuttgart@arcadiazoo-mongodb:27017/arcadiazoo_mongo_db?authSource=admin"
+        MONGODB_DATABASE="arcadiazoo_mongo_db"
 
 build:
     flavor: none
@@ -38,8 +39,12 @@ web:
             passthru: false
 
 
+DATABASE_URL: 'sqlite:////tmp/data.db'
+                MONGODB_URL: 'mongodb://127.0.0.1:27017'
+                MONGODB_DATABASE: 'app'
+
 mounts:
-    "/public/uploads": "shared:files/uploads"
+    "/public/uploads": "shared:files/uploads/"
     "/var/cache": { source: local, source_path: var/cache }
 
 
@@ -60,8 +65,9 @@ hooks:
 
     deploy: |
         set -x -e
-        bin/console cache:clear
+
         symfony-deploy
+
         mkdir -p public/uploads/images
 
 
@@ -78,4 +84,3 @@ workers:
         commands:
             # Consume "async" messages (as configured in the routing section of config/packages/messenger.yaml)
             start: symfony console --time-limit=3600 --memory-limit=64M messenger:consume async
-
