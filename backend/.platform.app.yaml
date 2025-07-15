@@ -37,7 +37,11 @@ web:
             root: "public"
             passthru: false
 
-
+variables:
+    env:
+        DATABASE_URL: 'sqlite:////tmp/data.db'
+        MONGODB_URL: 'mongodb://127.0.0.1:27017'
+        MONGODB_DATABASE: 'app'
 
 mounts:
     "/public/uploads": "shared:files/uploads"

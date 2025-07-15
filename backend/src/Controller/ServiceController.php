@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Image;
-use APP\Repository\ImageRepository;
 use App\Entity\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
