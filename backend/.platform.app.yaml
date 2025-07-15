@@ -11,7 +11,11 @@ runtime:
         - iconv
         - pdo_pgsql
         - mongodb
-        
+
+variables:
+    php:
+        upload_max_filesize: 20M
+        post_max_size: 20M
 
 
 build:
@@ -28,6 +32,7 @@ web:
             index:
                 - index.php
             scripts: true
+            client_max_body_size: 20M
         "/uploads/":
             allow: true
             root: "public"
