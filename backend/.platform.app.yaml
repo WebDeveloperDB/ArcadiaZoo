@@ -61,9 +61,8 @@ hooks:
 
     deploy: |
         set -x -e
-
+        bin/console cache:clear
         symfony-deploy
-
         mkdir -p public/uploads/images
 
 
