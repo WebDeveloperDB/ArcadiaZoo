@@ -15,9 +15,9 @@ runtime:
 
 variables:
     env:
-        DATABASE_URL="postgresql://bajram:Vfbstuttgart@127.0.0.1:5432/arcadiaZoo?serverVersion=16&charset=utf8"
-        MONGODB_URL="mongodb://Bajram:Vfbstuttgart@arcadiazoo-mongodb:27017/arcadiazoo_mongo_db?authSource=admin"
-        MONGODB_DATABASE="arcadiazoo_mongo_db"
+        DATABASE_URL: "postgresql://bajram:Vfbstuttgart@127.0.0.1:5432/arcadiaZoo?serverVersion=16&charset=utf8"
+        MONGODB_URL: "mongodb://Bajram:Vfbstuttgart@arcadiazoo-mongodb:27017/arcadiazoo_mongo_db?authSource=admin"
+        MONGODB_DATABASE: "arcadiazoo_mongo_db"
 
 build:
     flavor: none
