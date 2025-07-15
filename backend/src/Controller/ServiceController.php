@@ -51,9 +51,13 @@ class ServiceController extends AbstractController
         $service->setDescription($request->get('description'));
 
         /** @var UploadedFile[] $images */
-        $images = $request->files->all()['images'] ?? [];
+        $images = $request->files->get('images', []);
+        if (!is_array($images)) {
+            $images = $images ? [$images] : [];
+        }
 
         foreach ($images as $imageFile) {
+            if (!$imageFile) continue; 
             $newFilename = uniqid().'.'.$imageFile->guessExtension();
 
             try {
