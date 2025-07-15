@@ -15,9 +15,9 @@ runtime:
 
 variables:
     env:
-        DATABASE_URL: 'sqlite:////tmp/data.db'
-        MONGODB_URL: 'mongodb://127.0.0.1:27017'
-        MONGODB_DATABASE: 'app'
+        DATABASE_URL: "postgresql://${database.username}:${database.password}@${database.host}:${database.port}/${database.path}?serverVersion=16&charset=utf8"
+        MONGODB_URL: "mongodb://${mongo.username}:${mongo.password}@${mongo.host}:${mongo.port}"
+        MONGODB_DATABASE: "${mongo.path}"
 
 build:
     flavor: none
@@ -33,7 +33,7 @@ web:
             index:
                 - index.php
             scripts: true
-        "/uploads":
+        "/uploads/":
             allow: true
             root: "public"
             passthru: false
