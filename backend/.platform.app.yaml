@@ -62,6 +62,7 @@ hooks:
     deploy: |
         set -x -e
         bin/console cache:clear
+        bin/console doctrine:migrations:migrate --no-interaction
         symfony-deploy
         mkdir -p public/uploads/images
 
