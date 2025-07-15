@@ -13,11 +13,7 @@ runtime:
         - mongodb
         
 
-variables:
-    env:
-        DATABASE_URL: "postgresql://${database.username}:${database.password}@${database.host}:${database.port}/${database.path}?serverVersion=16&charset=utf8"
-        MONGODB_URL: "mongodb://${mongo.username}:${mongo.password}@${mongo.host}:${mongo.port}"
-        MONGODB_DATABASE: "${mongo.path}"
+
 
 build:
     flavor: none

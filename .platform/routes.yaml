@@ -8,7 +8,7 @@
     type: upstream
     upstream: "backend:http"
 
-"https://{default}/uploads/":
+"https://{default}/uploads":
     type: upstream
     upstream: "backend:http"
     cache:
