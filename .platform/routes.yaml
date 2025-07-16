@@ -1,6 +1,6 @@
 "https://{default}/":
     type: upstream
-    upstream: "public:http"
+    upstream: "frontend:http"
     cache:
         enabled: false
 
