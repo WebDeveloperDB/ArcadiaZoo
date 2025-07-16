@@ -41,7 +41,7 @@ mounts:
 
 relationships:
     database: "database:postgresql"
-    mongo: "mongodb:mongodb"
+    mongodb_database: "mongodb:mongodb"
 
     
 
