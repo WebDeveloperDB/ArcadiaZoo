@@ -30,12 +30,6 @@ class AdminDashboardController extends AbstractController
     #[Route('/admin/create-user', name: 'api_create_user', methods: ['POST'])]
     public function createUser(Request $request, UserPasswordHasherInterface $passwordHasher): JsonResponse
     {
-        return $this->json([
-        'body_raw' => $request->getContent(),
-        'post' => $request->request->all(),
-        'json' => json_decode($request->getContent(), true)
-    ]);
-    
         $data = json_decode($request->getContent(), true);
 
         if (!isset($data['email'], $data['password'], $data['role'])) {
