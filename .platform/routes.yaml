@@ -4,7 +4,7 @@
     cache:
         enabled: false
 
-"https://{default}/api/":
+"https://{default}/api":
     type: upstream
     upstream: "backend:http"
 
