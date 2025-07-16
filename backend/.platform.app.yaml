@@ -35,13 +35,13 @@ web:
 
 
 mounts:
-    "/public/uploads/": "shared:files/uploads/"
+    "/public/uploads": "shared:files/uploads/"
     "/var/cache": { source: local, source_path: var/cache }
 
 
 relationships:
-    database: "db:postgresql"
-    mongo: "mongodb:mongodb"
+    database: "database:postgresql"
+    mongodb: "mongodb:mongodb"
 
     
 
