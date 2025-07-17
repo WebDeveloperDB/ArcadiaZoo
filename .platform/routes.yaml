@@ -4,11 +4,11 @@
     cache:
         enabled: false
 
-"https://{default}/api/":
+"https://{default}/api":
     type: upstream
     upstream: "backend:http"
 
-"https://{default}/uploads/":
+"https://{default}/uploads":
     type: upstream
     upstream: "backend:http"
     cache:
