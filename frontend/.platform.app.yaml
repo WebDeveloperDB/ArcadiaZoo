@@ -2,7 +2,6 @@ name: frontend
 type: "php:8.2"
 
 hooks:
-  build: 
     npx node-sass public/scss/ -o public/css/ --output-style compressed --recursive
 
 web:
