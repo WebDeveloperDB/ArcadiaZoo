@@ -20,7 +20,5 @@ services:
         exclude: '../src/{DependencyInjection,Entity,Tests,Kernel.php}'
 
 # Expose zooEmail to MailerService
-    App\Service\MailerService:
-        arguments:
-            $zooEmail: '%zoo_email%'
+
 
