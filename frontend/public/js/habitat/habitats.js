@@ -258,8 +258,8 @@ async function fetchAndDisplayHabitats() {
                 </small>
                 <div class="fst-italic">${animal.description ?? ""}</div>
               </div>
-              <button class="btn btn-sm btn-warning ms-2 edit-animal-btn" data-id="${animal.id}" data-bs-toggle="modal" data-bs-target="#editAnimalModal">✏️</button>
-              <button class="btn btn-sm btn-danger ms-1 delete-animal-btn" data-id="${animal.id}">🗑</button>
+              <button class="btn btn-sm btn-warning ms-2 edit-animal-btn" data-id="${animal.id}" data-bs-toggle="modal" data-bs-target="#editAnimalModal" data-show="employee">✏️</button>
+              <button class="btn btn-sm btn-danger ms-1 delete-animal-btn" data-show="employee" data-id="${animal.id}">🗑</button>
             </li>
           `;
         }).join("");
@@ -275,12 +275,12 @@ async function fetchAndDisplayHabitats() {
         ${habitatImgHtml}
         <h5>${habitat.nom}</h5>
         <p>${habitat.description}</p>
-        <button class="btn btn-sm btn-primary me-1 edit-habitat-btn" data-id="${habitat.id}" data-bs-toggle="modal" data-bs-target="#editHabitatModal">✏️ Modifier</button>
-        <button class="btn btn-sm btn-danger delete-habitat-btn" data-id="${habitat.id}">🗑 Supprimer</button>
+        <button class="btn btn-sm btn-primary me-1 edit-habitat-btn" data-id="${habitat.id}" data-bs-toggle="modal" data-show="employee" data-bs-target="#editHabitatModal">✏️ Modifier</button>
+        <button class="btn btn-sm btn-danger delete-habitat-btn" data-show="employee" data-id="${habitat.id}">🗑 Supprimer</button>
         <hr>
         <h6>Tiere:</h6>
         ${animalsHtml}
-        <button class="btn btn-sm btn-success mt-2 add-animal-btn" data-habitat-id="${habitat.id}" data-bs-toggle="modal" data-bs-target="#addAnimalModal">➕ Ajouter un animal</button>
+        <button class="btn btn-sm btn-success mt-2 add-animal-btn" data-habitat-id="${habitat.id}" data-bs-toggle="modal" data-show="employee" data-bs-target="#addAnimalModal">➕ Ajouter un animal</button>
       `;
 
      

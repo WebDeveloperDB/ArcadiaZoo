@@ -34,7 +34,7 @@ security:
 
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api/admin, roles: PUBLIC_ACCESS }
+        - { path: ^/api/admin, roles: ROLE_ADMIN }
         - { path: ^/api/employee, roles: ROLE_EMPLOYEE }
         - { path: ^/api/vet, roles: ROLE_VET } 
         - { path: ^/api/contact/requests, roles: ROLE_EMPLOYEE }
