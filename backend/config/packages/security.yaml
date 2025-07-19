@@ -33,6 +33,12 @@ security:
             
 
     access_control:
+        - { path: ^/api/services$, roles: PUBLIC_ACCESS, methods: [GET] }
+        - { path: ^/api/services/\d+$, roles: PUBLIC_ACCESS, methods: [GET] }
+        - { path: ^/api/habitats$, roles: PUBLIC_ACCESS, methods: [GET] }
+        - { path: ^/api/habitats/\d+$, roles: PUBLIC_ACCESS, methods: [GET] }
+        - { path: ^/api/animals$, roles: PUBLIC_ACCESS, methods: [GET] }
+        - { path: ^/api/animals/\d+$, roles: PUBLIC_ACCESS, methods: [GET] }
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/api/admin, roles: ROLE_ADMIN }
         - { path: ^/api/employee, roles: ROLE_EMPLOYEE }
