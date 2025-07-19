@@ -30,9 +30,9 @@ web:
 
 variables:
     env:
-        DATABASE_URL: "pgsql://user:pass@host:5432/dbname"
-        MONGODB_URL: "mongodb://user:pass@host:27017/dbname?authSource=admin"
-        MONGODB_DATABASE: "dbname"
+        DATABASE_URL: "postgresql://bajram:Vfbstuttgart@arcadiazoo-postgres.internal:5432/arcadiaZoo?serverVersion=16&charset=utf8"
+        MONGODB_URL: "mongodb://Bajram:Vfbstuttgart@arcadiazoo-mongodb.internal:27017/arcadiazoo_mongo_db?authSource=admin"
+        MONGODB_DATABASE: "arcadiazoo_mongo_db"
 
 
 mounts:
