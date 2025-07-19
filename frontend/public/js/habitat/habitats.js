@@ -301,6 +301,8 @@ async function fetchAndDisplayHabitats() {
 
 
     activateDynamicButtons();
+    showAndHideElementsForRoles();
+
   } catch (err) {
     console.error("Erreur de fetchAndDisplayHabitats:", err);
   }
