@@ -63,42 +63,38 @@ async function fetchWithAuth(url, options = {}) {
 // Funktion um Elemente je nach Rolle ein- oder auszublenden
 function showAndHideElementsForRoles() {
     const userConnected = isConnected();
-    const role = getRole();
+    const role = getRole(); // z.B. "ROLE_ADMIN", "ROLE_EMPLOYEE", "ROLE_VET" oder null
 
-    let allElementsToEdit = document.querySelectorAll('[data-show]');
+    document.querySelectorAll('[data-show]').forEach(element => {
+        // Alle erlaubten Werte als Array, Lowercase
+        let allowed = element.dataset.show.split(",").map(r => r.trim().toLowerCase());
+        let show = false;
 
-    allElementsToEdit.forEach(element => {
-        switch (element.dataset.show) {
-            case 'disconnected':
-                if (userConnected) {
-                    element.classList.add("d-none");
-                }
-                break;
-            case 'connected':
-                if (!userConnected) {
-                    element.classList.add("d-none");
-                }
-                break;
-            case 'admin':
-                if (!userConnected || role !== "ROLE_ADMIN") {
-                    element.classList.add("d-none");
-                }
-                break;
-            case 'employee':
-                if (!userConnected || role !== "ROLE_EMPLOYEE") {
-                    element.classList.add("d-none");
-                }
-                break;
-            case 'vet':
-                if (!userConnected || role !== "ROLE_VET") {
-                    element.classList.add("d-none");
-                }
-                break;
+        // disconnected: nur sichtbar, wenn NICHT eingeloggt
+        if (allowed.includes('disconnected') && !userConnected) {
+            show = true;
+        }
+        // connected: nur sichtbar, wenn eingeloggt
+        else if (allowed.includes('connected') && userConnected) {
+            show = true;
+        }
+        // Rollen prüfen (nur wenn eingeloggt)
+        else if (userConnected && role) {
+            const roleName = role.replace("ROLE_", "").toLowerCase(); // "admin", "employee", "vet"
+            if (allowed.includes(roleName)) {
+                show = true;
+            }
+        }
+
+        // Sichtbarkeit setzen
+        if (show) {
+            element.classList.remove("d-none");
+        } else {
+            element.classList.add("d-none");
         }
     });
-
-    console.log("Token utilisé pour charger les habitats :", getToken());
 }
+
 
 // EventListener für das Signout-Button
 signoutBtn.addEventListener("click", signout);
