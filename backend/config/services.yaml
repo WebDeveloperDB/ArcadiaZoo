@@ -10,7 +10,6 @@ services:
         public: true
 
     # Enregistrement automatique des commandes
-   
 
     # Enregistrement automatique des services
     App\:

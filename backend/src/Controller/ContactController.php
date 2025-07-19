@@ -39,7 +39,7 @@ class ContactController extends AbstractController
             $this->entityManager->flush();
 
             $this->mailer->sendEmail(
-                'vfb_1893@hotmail.com',
+                'diamante_7%40hotmail.fr',
                 'Nouvelle demande de contact',
                 sprintf(
                     "Nouvelle demande reçue :\n\nTitre : %s\nEmail : %s\nMessage :\n%s",
@@ -110,13 +110,4 @@ public function deleteContactRequest(ContactRequestRepository $repo, int $id, En
     $em->flush();
     return $this->json(['message' => 'Contact supprimé!']);
 }
-
-
-    #[Route('/test-email')]
-public function testEmail(MailerService $mailer): Response
-{
-    $mailer->sendEmail('test@deinmail.de', 'Test', 'Funktioniert es?');
-    return new Response('Fertig');
-}
-
 }
