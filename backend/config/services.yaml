@@ -1,7 +1,7 @@
 parameters:
     C3: 'default_value' # Valeur par défaut pour éviter l'erreur
     images_directory: '%kernel.project_dir%/public/uploads/images'
-
+    zoo_email: '%env(ZOO_EMAIL)%'
 
 services:
     _defaults:
@@ -10,11 +10,17 @@ services:
         public: true
 
     # Enregistrement automatique des commandes
-    
+    App\Command\:
+        resource: '../src/Command'
+        tags: ['console.command']
 
     # Enregistrement automatique des services
     App\:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Tests,Kernel.php}'
 
+# Expose zooEmail to MailerService
+    App\Service\MailerService:
+        arguments:
+            $zooEmail: '%zoo_email%'
 

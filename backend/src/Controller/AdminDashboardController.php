@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Service\MailerService;
 use DateTimeImmutable;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -20,6 +21,7 @@ class AdminDashboardController extends AbstractController
 {
     public function __construct(private EntityManagerInterface $manager,
     private SerializerInterface $serializer,
+    private MailerService $mailerService,
     private UserPasswordHasherInterface $passwordHasher
 )
     {

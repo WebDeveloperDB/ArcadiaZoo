@@ -33,6 +33,7 @@ variables:
         DATABASE_URL: "postgresql://bajram:Vfbstuttgart@arcadiazoo-postgres.internal:5432/arcadiaZoo?serverVersion=16&charset=utf8"
         MONGODB_URL: "mongodb://Bajram:Vfbstuttgart@arcadiazoo-mongodb.internal:27017/arcadiazoo_mongo_db?authSource=admin"
         MONGODB_DATABASE: "arcadiazoo_mongo_db"
+        ZOO_EMAIL: "vfb_1893@hotmail.com"
 
 
 mounts:
