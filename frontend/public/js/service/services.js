@@ -1,11 +1,10 @@
+  loadServices();
 // Fonction pour charger et afficher tous les services
   async function loadServices() {
     const token = getToken();
     try {
       const response = await fetch("/api/services", {
-        headers: {
-          "X-AUTH-TOKEN": token
-        }
+        headers: token ? { "X-AUTH-TOKEN": token } : {}
       });
       if (!response.ok) throw new Error("Erreur HTTP : " + response.status);
 
@@ -167,7 +166,6 @@
     modal.show();
   }
 
-  loadServices();
 
 
 

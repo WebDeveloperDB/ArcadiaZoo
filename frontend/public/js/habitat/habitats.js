@@ -258,7 +258,7 @@ async function fetchAndDisplayHabitats() {
                 </small>
                 <div class="fst-italic">${animal.description ?? ""}</div>
               </div>
-              <button class="btn btn-sm btn-warning ms-2 edit-animal-btn" data-id="${animal.id}" data-bs-toggle="modal" data-bs-target="#editAnimalModal" data-show="admin,employee">✏️</button>
+              <button class="btn btn-sm btn-warning ms-2 edit-animal-btn" data-id="${animal.id}" data-bs-toggle="modal" data-bs-target="#editAnimalModal" data-show="employee">✏️</button>
               <button class="btn btn-sm btn-danger ms-1 delete-animal-btn" data-show="employee" data-id="${animal.id}">🗑</button>
             </li>
           `;
