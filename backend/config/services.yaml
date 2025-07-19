@@ -10,9 +10,7 @@ services:
         public: true
 
     # Enregistrement automatique des commandes
-    App\Command\:
-        resource: '../src/Command'
-        tags: ['console.command']
+    
 
     # Enregistrement automatique des services
     App\:
