@@ -28,6 +28,11 @@ web:
                 - index.php
             scripts: true
 
+variables:
+    env:
+        DATABASE_URL: "pgsql://user:pass@host:5432/dbname"
+        MONGODB_URL: "mongodb://user:pass@host:27017/dbname?authSource=admin"
+        MONGODB_DATABASE: "dbname"
 
 
 mounts:
