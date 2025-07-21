@@ -65,9 +65,7 @@ async function fetchValidatedAvis() {
           <p class="card-text">${avis.commentaire}</p>
           <small class="text-muted">${avis.createdAt ? new Date(avis.createdAt).toLocaleDateString() : ""}</small>
         </div>
-        <div class="mt-2">
-          <button class="btn btn-danger btn-sm" onclick="deleteAvis(${a.id})">Rejeter</button>
-        </div>
+        
       </div>
     </div>
   `).join("");
