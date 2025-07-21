@@ -47,6 +47,8 @@ async function deleteAvis(id) {
   }
 }
 
+validateAvis();
+deleteAvis();
 
 async function fetchWithAuth(url, options = {}) {
   const token = localStorage.getItem("getToken"); 
