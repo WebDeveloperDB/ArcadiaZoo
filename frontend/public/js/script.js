@@ -60,43 +60,41 @@ async function fetchWithAuth(url, options = {}) {
     return fetch(url, { ...options, headers });
 }
 
-// Funktion um Elemente je nach Rolle ein- oder auszublenden
+// Funktion um Elemente je nach Rolle ein oder auszublenden
 function showAndHideElementsForRoles() {
     const userConnected = isConnected();
-    const role = getRole();
+    const role = getRole(); // "ROLE_ADMIN", "ROLE_EMPLOYEE"
 
-    let allElementsToEdit = document.querySelectorAll('[data-show]');
+    document.querySelectorAll('[data-show]').forEach(element => {
+        
+        let allowed = element.dataset.show.split(",").map(r => r.trim().toLowerCase());
+        let show = false;
 
-    allElementsToEdit.forEach(element => {
-        switch (element.dataset.show) {
-            case 'disconnected':
-                if (userConnected) {
-                    element.classList.add("d-none");
-                }
-                break;
-            case 'connected':
-                if (!userConnected) {
-                    element.classList.add("d-none");
-                }
-                break;
-            case 'admin':
-                if (!userConnected || role !== "ROLE_ADMIN") {
-                    element.classList.add("d-none");
-                }
-                break;
-            case 'employee':
-                if (!userConnected || role !== "ROLE_EMPLOYEE") {
-                    element.classList.add("d-none");
-                }
-                break;
-            case 'vet':
-                if (!userConnected || role !== "ROLE_VET") {
-                    element.classList.add("d-none");
-                }
-                break;
+        
+        if (allowed.includes('disconnected') && !userConnected) {
+            show = true;
+        }
+       
+        else if (allowed.includes('connected') && userConnected) {
+            show = true;
+        }
+        // Rollen prüfen (nur wenn eingeloggt)
+        else if (userConnected && role) {
+            const roleName = role.replace("ROLE_", "").toLowerCase();
+            if (allowed.includes(roleName)) {
+                show = true;
+            }
+        }
+
+        
+        if (show) {
+            element.classList.remove("d-none");
+        } else {
+            element.classList.add("d-none");
         }
     });
 }
+
 
 // EventListener für das Signout-Button
 signoutBtn.addEventListener("click", signout);

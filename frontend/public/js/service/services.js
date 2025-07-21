@@ -33,8 +33,8 @@
         <h3>${service.nom}</h3>
         <p>${service.description}</p>
         ${imagesHtml}
-        <button class="btn btn-warning edit-service-btn" data-id="${service.id}" data-show="employee">Modifier</button>
-        <button class="btn btn-danger delete-service-btn" data-id="${service.id}" data-show="employee">Supprimer</button>
+        <button class="btn btn-warning edit-service-btn" data-id="${service.id}" data-show="admin,employee">Modifier</button>
+        <button class="btn btn-danger delete-service-btn" data-id="${service.id}" data-show="admin,employee">Supprimer</button>
       `;
 
       container.appendChild(card);
