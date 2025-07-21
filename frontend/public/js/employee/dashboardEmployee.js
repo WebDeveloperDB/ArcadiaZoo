@@ -47,8 +47,6 @@ async function deleteAvis(id) {
   }
 }
 
-validateAvis();
-deleteAvis();
 
 async function fetchWithAuth(url, options = {}) {
   const token = localStorage.getItem("getToken"); 
@@ -61,3 +59,48 @@ async function fetchWithAuth(url, options = {}) {
     },
   });
 }
+
+
+
+// funktion um validierten avis zu loschen
+async function loadValidatedAvis() {
+  const res = await fetchWithAuth("/api/avis/validated");
+  const validatedAvisList = document.getElementById("validated-avis-list");
+  if (!validatedAvisList) return;
+  if (!res.ok) {
+    validatedAvisList.innerHTML = "<div class='alert alert-danger'>Erreur lors du chargement des avis validés.</div>";
+    return;
+  }
+  const avis = await res.json();
+  if (!avis.length) {
+    validatedAvisList.innerHTML = "<div class='alert alert-info'>Aucun avis validé.</div>";
+    return;
+  }
+  validatedAvisList.innerHTML = avis.map(a => `
+    <div class="card mb-2 shadow">
+      <div class="card-body">
+        <h6>${a.pseudo}</h6>
+        <p>${a.commentaire}</p>
+        <small class="text-muted">${new Date(a.createdAt).toLocaleDateString()}</small>
+        <div class="mt-2">
+          <button class="btn btn-danger btn-sm" onclick="deleteValidatedAvis(${a.id})">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+
+async function deleteValidatedAvis(id) {
+  const res = await fetchWithAuth(`/api/avis/${id}`, { method: "DELETE" });
+  if (res.ok) {
+    
+    loadValidatedAvis();
+  } else {
+    alert("Erreur lors de la suppression de l'avis validé.");
+  }
+}
+
+
+loadPendingAvis();
+loadValidatedAvis();
