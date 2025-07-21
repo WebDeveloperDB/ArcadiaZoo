@@ -56,10 +56,7 @@ async function fetchValidatedAvis() {
   const avisList = await res.json();
   const listDiv = document.getElementById("avis-list");
   if (!listDiv) return;
-  if (avisList.length === 0) {
-    listDiv.innerHTML = "<div class='text-muted'>Aucun avis publié pour le moment.</div>";
-    return;
-  }
+  
   listDiv.innerHTML = avisList.map(avis => `
     <div class="col-md-6 col-lg-4 mb-3">
       <div class="card shadow">
@@ -67,6 +64,9 @@ async function fetchValidatedAvis() {
           <h6 class="card-title">${avis.pseudo}</h6>
           <p class="card-text">${avis.commentaire}</p>
           <small class="text-muted">${avis.createdAt ? new Date(avis.createdAt).toLocaleDateString() : ""}</small>
+        </div>
+        <div class="mt-2">
+          <button class="btn btn-danger btn-sm" onclick="deleteAvis(${a.id})">Rejeter</button>
         </div>
       </div>
     </div>

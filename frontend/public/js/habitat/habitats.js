@@ -280,7 +280,7 @@ async function fetchAndDisplayHabitats() {
         <hr>
         <h6>Tiere:</h6>
         ${animalsHtml}
-        <button class="btn btn-sm btn-success mt-2 add-animal-btn" data-habitat-id="${habitat.id}" data-bs-toggle="modal" data-show="admin,employee" data-bs-target="#addAnimalModal">➕ Ajouter un animal</button>
+        <button class="btn btn-sm btn-success mt-2 add-animal-btn" data-habitat-id="${habitat.id}" data-bs-toggle="modal" data-show="employee" data-bs-target="#addAnimalModal">➕ Ajouter un animal</button>
       `;
 
      
