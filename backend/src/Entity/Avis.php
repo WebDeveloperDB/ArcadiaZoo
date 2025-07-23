@@ -33,8 +33,8 @@ class Avis
 
     public function __construct()
     {
-        $this->createdAt = new \DateTimeImmutable(); 
-        $this->isValidated = false; 
+        $this->createdAt = new \DateTimeImmutable();
+        $this->isValidated = false;
     }
 
     public function getId(): ?int

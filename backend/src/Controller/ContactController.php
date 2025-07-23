@@ -39,7 +39,7 @@ class ContactController extends AbstractController
             $this->entityManager->flush();
 
             $this->mailer->sendEmail(
-                'diamante_7%40hotmail.fr',
+                'diamante_7@40hotmail.fr',
                 'Nouvelle demande de contact',
                 sprintf(
                     "Nouvelle demande reçue :\n\nTitre : %s\nEmail : %s\nMessage :\n%s",
@@ -50,9 +50,11 @@ class ContactController extends AbstractController
             );
 
             return new JsonResponse(['message' => 'Demande envoyée avec succès.'], 201);
-        } catch (\Throwable $e) {
-            return new JsonResponse(['message' => 'Erreur serveur.'], 500);
-        }
+            } catch (\Throwable $e) {
+                    return new JsonResponse([
+                    'message' => 'Erreur serveur: ' . $e->getMessage(),
+                     ], 500);
+}
     }
 
     #[Route('/api/contact/requests', name: 'api_contact_list', methods: ['GET'])]
