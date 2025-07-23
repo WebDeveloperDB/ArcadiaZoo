@@ -27,6 +27,11 @@ web:
             index:
                 - index.php
             scripts: true
+        "/uploads/":
+            root: "public/uploads"
+            allow: true
+            scripts: false
+            expires: 1h
 
 variables:
     env:
