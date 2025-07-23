@@ -154,7 +154,7 @@ async function handleCreateAnimal(e) {
 
 
 
-// 🔄 Modifier un animal
+//  Modifier un animal
 async function handleEditAnimal(e) {
   e.preventDefault();
   const form = e.target;
@@ -184,7 +184,7 @@ async function handleEditAnimal(e) {
   }
 }
 
-// 🗑 Supprimer un animal
+// Supprimer un animal
 function deleteAnimal(id) {
   if (!confirm("L'animal vraiment supprimer ?")) return;
 
@@ -202,7 +202,7 @@ function deleteAnimal(id) {
     .catch(err => console.error("❌ Animal Delete Error:", err));
 }
 
-// 📊 MongoDB: Consultation statistique
+// MongoDB: Consultation statistique
 function trackAnimalConsultation(animalId) {
   fetch("/api/consultations", {
     method: "POST",
@@ -254,7 +254,7 @@ async function fetchAndDisplayHabitats() {
                 <span class="badge bg-secondary ms-2">${animal.etat ?? ""}</span>
                 <br>
                 <small class="text-muted">
-                  Race: ${animal.race?.nom ?? "Inconnu"}
+                  Race: ${animal.race?.nom ?? ""}
                 </small>
                 <div class="fst-italic">${animal.description ?? ""}</div>
               </div>
@@ -311,7 +311,7 @@ async function fetchAndDisplayHabitats() {
 
 // Enregistrer les boutons dynamiquement
 function activateDynamicButtons() {
-  // 🏕️ Habitat modifier
+  //  Habitat modifier
   document.querySelectorAll(".edit-habitat-btn").forEach(btn => {
     btn.addEventListener("click", async () => {
       const id = btn.dataset.id;
