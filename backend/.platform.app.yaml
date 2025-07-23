@@ -36,7 +36,7 @@ web:
 variables:
     env:
         DATABASE_URL: "postgresql://bajram:Vfbstuttgart@arcadiazoo-postgres.internal:5432/arcadiaZoo?serverVersion=16&charset=utf8"
-        MONGODB_URL: "mongodb://main:main@mongo.internal:27017/main?authSource=admin"
+        MONGODB_URL: "mongodb://main:main@mongo.internal:27017/main"
         MONGODB_DATABASE: "main"
         MAILER_DSN: "smtp://diamante_7%40hotmail.fr:limelife@smtp.office365.com:587?encryption=tls"
         ZOO_EMAIL: "diamante_7@hotmail.fr"
