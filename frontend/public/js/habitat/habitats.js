@@ -251,7 +251,7 @@ async function fetchAndDisplayHabitats() {
               ${animalImgHtml}
               <div class="flex-grow-1">
                 <strong>${animal.prenom}</strong>
-                <span class="badge bg-secondary ms-2">${animal.etat ?? ""}</span>
+                <span class="badge bg-secondary ms-2">${animal.etat?.nom ?? ""}</span>
                 <br>
                 <small class="text-muted">
                   Race: ${animal.race?.nom ?? ""}
