@@ -1,16 +1,12 @@
-function getToken() {
-    const match = document.cookie.match('(^|;)\\s*accesstoken\\s*=\\s*([^;]+)');
-    return match ? match.pop() : null;
-}
-
-function fetchWithAuth(url, options = {}) {
+async function fetchWithAuth(url, options = {}) {
     const token = getToken();
-    options.headers = options.headers || {};
-    if (token) {
-        options.headers['Authorization'] = `Bearer ${token}`;
-    }
+    const headers = {
+        ...options.headers,
+        'X-AUTH-TOKEN': token,
+    };
     return fetch(url, options);
 }
+
 
 async function createUser() {
     const token = getToken();
@@ -29,7 +25,8 @@ async function createUser() {
         const response = await fetchWithAuth('/api/admin/create-user', {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "X-AUTH-TOKEN": token
             },
             body: JSON.stringify({ email, password, role })
         });
