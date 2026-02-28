@@ -61,8 +61,8 @@ async function fetchValidatedAvis() {
     <div class="col-md-6 col-lg-4 mb-3">
       <div class="card shadow">
         <div class="card-body">
-          <h6 class="card-title">${avis.pseudo}</h6>
-          <p class="card-text">${avis.commentaire}</p>
+          <h6 class="card-title">${sanitizeHTML(avis.pseudo)}</h6>
+          <p class="card-text">${sanitizeHTML(avis.commentaire)}</p>
           <small class="text-muted">${avis.createdAt ? new Date(avis.createdAt).toLocaleDateString() : ""}</small>
         </div>
         

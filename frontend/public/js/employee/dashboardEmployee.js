@@ -15,8 +15,8 @@ async function loadPendingAvis() {
   pendingAvisList.innerHTML = avis.map(a => `
     <div class="card mb-2 shadow">
       <div class="card-body">
-        <h6>${a.pseudo}</h6>
-        <p>${a.commentaire}</p>
+        <h6>${sanitizeHTML(a.pseudo)}</h6>
+        <p>${sanitizeHTML(a.commentaire)}</p>
         <small class="text-muted">${new Date(a.createdAt).toLocaleDateString()}</small>
         <div class="mt-2">
           <button class="btn btn-success btn-sm me-1" onclick="validateAvis(${a.id})">Valider</button>
@@ -79,8 +79,8 @@ async function loadValidatedAvis() {
   validatedAvisList.innerHTML = avis.map(a => `
     <div class="card mb-2 shadow">
       <div class="card-body">
-        <h6>${a.pseudo}</h6>
-        <p>${a.commentaire}</p>
+        <h6>${sanitizeHTML(a.pseudo)}</h6>
+        <p>${sanitizeHTML(a.commentaire)}</p>
         <small class="text-muted">${new Date(a.createdAt).toLocaleDateString()}</small>
         <div class="mt-2">
           <button class="btn btn-danger btn-sm" onclick="deleteValidatedAvis(${a.id})">Supprimer</button>
