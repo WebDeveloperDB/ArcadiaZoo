@@ -64,10 +64,10 @@ function displayContactRequests(contacts) {
         contactItem.className = 'card mb-3';
         contactItem.innerHTML = `
             <div class="card-body">
-                <p><strong>Titre :</strong> ${contact.title}</p>
-                <p><strong>Email :</strong> ${contact.email}</p>
-                <p><strong>Message :</strong> ${contact.description}</p>
-                <button class="btn btn-primary me-2 reply-btn" data-bs-toggle="modal" data-bs-target="#replyContactModal" data-email="${contact.email}">Répondre</button>
+                <p><strong>Titre :</strong> ${sanitizeHTML(contact.title)}</p>
+                <p><strong>Email :</strong> ${sanitizeHTML(contact.email)}</p>
+                <p><strong>Message :</strong> ${sanitizeHTML(contact.description)}</p>
+                <button class="btn btn-primary me-2 reply-btn" data-bs-toggle="modal" data-bs-target="#replyContactModal" data-email="${sanitizeHTML(contact.email)}">Répondre</button>
                 <button class="btn btn-danger delete-btn" data-id="${contact.id}">Supprimer</button>
             </div>
         `;

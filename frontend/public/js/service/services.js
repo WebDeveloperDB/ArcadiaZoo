@@ -26,12 +26,12 @@
 
       let imagesHtml = "";
       if (service.images && service.images.length > 0) { 
-        imagesHtml = service.images.map(img => `<img src="${img.url}" alt="Image" style="max-width: 500px;">`).join("");
+        imagesHtml = service.images.map(img => `<img src="${sanitizeHTML(img.url)}" alt="Image" style="max-width: 500px;">`).join("");
       }
 
       card.innerHTML = `
-        <h3>${service.nom}</h3>
-        <p>${service.description}</p>
+        <h3>${sanitizeHTML(service.nom)}</h3>
+        <p>${sanitizeHTML(service.description)}</p>
         ${imagesHtml}
         <button class="btn btn-warning edit-service-btn" data-id="${service.id}" data-show="admin,employee">Modifier</button>
         <button class="btn btn-danger delete-service-btn" data-id="${service.id}" data-show="admin,employee">Supprimer</button>

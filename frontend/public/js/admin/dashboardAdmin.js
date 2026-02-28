@@ -66,7 +66,7 @@ async function loadUsers() {
 
         users.forEach(user => {
             const div = document.createElement("div");
-            div.innerHTML = `<strong>${user.email}</strong> - ${user.role}`;
+            div.innerHTML = `<strong>${sanitizeHTML(user.email)}</strong> - ${sanitizeHTML(user.role)}`;
             userList.appendChild(div);
         });
     } catch (error) {

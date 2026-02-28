@@ -233,7 +233,7 @@ async function fetchAndDisplayHabitats() {
       let habitatImgHtml = "";
       if (habitat.images && habitat.images.length > 0) {
         const habitatImgUrl = `${habitat.images[0].url.replace(/\\/g, "")}`;
-        habitatImgHtml = `<img src="${habitatImgUrl}" alt="${habitat.nom}" class="img-fluid mb-2 rounded shadow-sm d-block mx-auto" style="max-height: 220px; width: 100%; object-fit: cover;">`;
+        habitatImgHtml = `<img src="${sanitizeHTML(habitatImgUrl)}" alt="${sanitizeHTML(habitat.nom)}" class="img-fluid mb-2 rounded shadow-sm d-block mx-auto" style="max-height: 220px; width: 100%; object-fit: cover;">`;
       }
 
       // Animaux dans Habitat 
@@ -244,19 +244,19 @@ async function fetchAndDisplayHabitats() {
           let animalImgHtml = "";
           if (animal.images && animal.images.length > 0) {
             const animalImgUrl = `${animal.images[0].url.replace(/\\/g, "")}`;
-            animalImgHtml = `<img src="${animalImgUrl}" alt="${animal.prenom}" class="rounded me-3" style="width: 100px; height: 80px; object-fit: cover; box-shadow: 0 2px 10px #0001;">`;
+            animalImgHtml = `<img src="${sanitizeHTML(animalImgUrl)}" alt="${sanitizeHTML(animal.prenom)}" class="rounded me-3" style="width: 100px; height: 80px; object-fit: cover; box-shadow: 0 2px 10px #0001;">`;
           }
           return `
             <li class="d-flex align-items-center mb-2 border-bottom pb-2 animal-item" data-animal-id="${animal.id}">
               ${animalImgHtml}
               <div class="flex-grow-1">
-                <strong>${animal.prenom}</strong>
-                <span class="badge bg-secondary ms-2">${animal.etat?.nom ?? ""}</span>
+                <strong>${sanitizeHTML(animal.prenom)}</strong>
+                <span class="badge bg-secondary ms-2">${sanitizeHTML(animal.etat?.nom ?? "")}</span>
                 <br>
                 <small class="text-muted">
-                  Race: ${animal.race?.nom ?? ""}
+                  Race: ${sanitizeHTML(animal.race?.nom ?? "")}
                 </small>
-                <div class="fst-italic">${animal.description ?? ""}</div>
+                <div class="fst-italic">${sanitizeHTML(animal.description ?? "")}</div>
               </div>
               <button class="btn btn-sm btn-warning ms-2 edit-animal-btn" data-id="${animal.id}" data-bs-toggle="modal" data-bs-target="#editAnimalModal" data-show="admin,employee">✏️</button>
               <button class="btn btn-sm btn-danger ms-1 delete-animal-btn" data-show="admin,employee" data-id="${animal.id}">🗑</button>
@@ -273,8 +273,8 @@ async function fetchAndDisplayHabitats() {
       div.className = "card mb-3 p-3 shadow-sm";
       div.innerHTML = `
         ${habitatImgHtml}
-        <h5>${habitat.nom}</h5>
-        <p>${habitat.description}</p>
+        <h5>${sanitizeHTML(habitat.nom)}</h5>
+        <p>${sanitizeHTML(habitat.description)}</p>
         <button class="btn btn-sm btn-primary me-1 edit-habitat-btn" data-id="${habitat.id}" data-bs-toggle="modal" data-show="admin,employee" data-bs-target="#editHabitatModal">✏️ Modifier</button>
         <button class="btn btn-sm btn-danger delete-habitat-btn" data-show="admin,employee" data-id="${habitat.id}">🗑 Supprimer</button>
         <hr>
