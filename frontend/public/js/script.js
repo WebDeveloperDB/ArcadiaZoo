@@ -2,6 +2,33 @@ const tokenCookieName = "accesstoken";
 const RoleCookieName = "role";
 const signoutBtn = document.getElementById("signout-btn");
 
+// Route all /api requests to Symfony backend when frontend runs under Apache/XAMPP.
+const localApiOrigin = "http://localhost:8000";
+const apiOrigin = window.location.hostname === "localhost" ? localApiOrigin : window.location.origin;
+const nativeFetch = window.fetch.bind(window);
+
+function resolveApiUrl(url) {
+    if (typeof url !== "string") return url;
+    if (!url.startsWith("/api")) return url;
+    return `${apiOrigin}${url}`;
+}
+
+window.fetch = (input, init) => {
+    if (typeof input === "string") {
+        return nativeFetch(resolveApiUrl(input), init);
+    }
+
+    if (input instanceof Request) {
+        const nextUrl = resolveApiUrl(input.url);
+        if (nextUrl !== input.url) {
+            const proxiedRequest = new Request(nextUrl, input);
+            return nativeFetch(proxiedRequest, init);
+        }
+    }
+
+    return nativeFetch(input, init);
+};
+
 // Token und Rolle holst du zentral!
 function getToken() {
     return getCookie(tokenCookieName);
