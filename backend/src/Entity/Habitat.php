@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Entity\Animal;
 use App\Entity\Image;
 
@@ -21,10 +22,14 @@ class Habitat
 
     #[ORM\Column(length: 255)]
     #[Groups(['habitat:read'])]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 2, max: 255)]
     private ?string $nom = null;
 
     #[ORM\Column(length: 1000)]
     #[Groups(['habitat:read'])]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 1000)]
     private ?string $description = null;
 
     #[ORM\OneToMany(mappedBy: 'habitat', targetEntity: Animal::class, cascade: ['persist', 'remove'])]

@@ -6,6 +6,7 @@ use App\Repository\RapportVeterinaireRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Entity\Animal;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: RapportVeterinaireRepository::class)]
 class RapportVeterinaire
@@ -18,15 +19,19 @@ class RapportVeterinaire
 
     #[ORM\Column(length: 255)]
     #[Groups(['animal:read', 'habitat:read'])]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 2, max: 255)]
     private ?string $etat = null;
 
     #[ORM\Column(nullable: true)]
     #[Groups(['animal:read', 'habitat:read'])]
+    #[Assert\Type(type: \DateTimeInterface::class)]
     private ?\DateTimeInterface $date = null;
 
 
     #[ORM\OneToOne(inversedBy: 'rapportVeterinaire')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull]
     private ?Animal $animal = null;
 
     public function getId(): ?int

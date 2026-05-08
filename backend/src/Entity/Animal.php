@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Entity\Habitat;
 use App\Entity\Image;
 use App\Entity\RapportVeterinaire;
@@ -25,10 +26,13 @@ class Animal
 
     #[ORM\Column(length: 255)]
     #[Groups(['animal:read', 'habitat:read'])]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 2, max: 255)]
     private ?string $prenom = null;
 
     #[ORM\Column(type: 'text', nullable: true)]
     #[Groups(['animal:read', 'habitat:read'])]
+    #[Assert\Length(max: 2000)]
     private ?string $description = null;
 
     #[ORM\ManyToOne(targetEntity: Race::class)]
@@ -39,6 +43,7 @@ class Animal
     #[ORM\ManyToOne(inversedBy: 'animaux')]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(['animal:read'])]
+    #[Assert\NotNull]
     private ?Habitat $habitat = null;
 
     #[ORM\OneToOne(mappedBy: 'animal', cascade: ['persist', 'remove'])]

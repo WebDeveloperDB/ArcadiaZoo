@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AvisRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AvisRepository::class)]
 #[ORM\Table(name: "avis")]
@@ -18,10 +19,14 @@ class Avis
 
     #[ORM\Column(type: "string", length: 255)]
     #[Groups(["avis:read"])]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 2, max: 255)]
     private ?string $pseudo = null;
 
     #[ORM\Column(type: "text")]
     #[Groups(["avis:read"])]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 2000)]
     private ?string $commentaire = null;
 
     #[ORM\Column(type: "boolean")]

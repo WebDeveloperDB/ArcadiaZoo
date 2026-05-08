@@ -8,6 +8,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use App\Entity\Animal;
 use App\Entity\Habitat;
 use App\Entity\Service;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ImageRepository::class)]
 class Image
@@ -20,10 +21,14 @@ class Image
 
     #[ORM\Column(length: 255)]
     #[Groups(['animal:read', 'habitat:read', 'service:read'])]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)]
     private ?string $url = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['animal:read', 'habitat:read', 'service:read'])]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)]
     private ?string $alt = null;
 
     #[ORM\ManyToOne(inversedBy: 'images')]

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\RaceRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: RaceRepository::class)]
 class Race
@@ -17,6 +18,8 @@ class Race
 
     #[ORM\Column(length: 255)]
     #[Groups(['animal:read'])]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 2, max: 255)]
     private ?string $nom = null;
 
     public function getId(): ?int
