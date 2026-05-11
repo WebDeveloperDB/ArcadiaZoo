@@ -1,4 +1,19 @@
   loadServices();
+
+  function resolveImageUrl(rawUrl) {
+    if (!rawUrl) return "";
+    const cleaned = rawUrl.replace(/\\/g, "");
+    if (cleaned.startsWith("http://") || cleaned.startsWith("https://")) {
+      return cleaned;
+    }
+
+    const basePath = window.APP_BASE_PATH ?? "";
+    if (basePath && cleaned.startsWith("/")) {
+      return `${basePath}${cleaned}`;
+    }
+
+    return cleaned;
+  }
 // Fonction pour charger et afficher tous les services
   async function loadServices() {
     const token = getToken();
@@ -26,7 +41,7 @@
 
       let imagesHtml = "";
       if (service.images && service.images.length > 0) { 
-        imagesHtml = service.images.map(img => `<img src="${sanitizeHTML(img.url)}" alt="Image" style="max-width: 500px;">`).join("");
+        imagesHtml = service.images.map(img => `<img src="${sanitizeHTML(resolveImageUrl(img.url))}" alt="Image" style="max-width: 500px;">`).join("");
       }
 
       card.innerHTML = `

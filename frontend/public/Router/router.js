@@ -9,6 +9,8 @@ const appBasePath = (() => {
   return base.endsWith("/") && base !== "/" ? base.slice(0, -1) : base;
 })();
 
+window.APP_BASE_PATH = appBasePath;
+
 const toAppUrl = (path) => {
   const normalizedPath = path === "/" ? "/" : `/${path.replace(/^\/+/, "")}`;
   if (appBasePath === "/") {

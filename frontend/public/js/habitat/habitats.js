@@ -1,6 +1,21 @@
 
 fetchAndDisplayHabitats();
 
+function resolveImageUrl(rawUrl) {
+  if (!rawUrl) return "";
+  const cleaned = rawUrl.replace(/\\/g, "");
+  if (cleaned.startsWith("http://") || cleaned.startsWith("https://")) {
+    return cleaned;
+  }
+
+  const basePath = window.APP_BASE_PATH ?? "";
+  if (basePath && cleaned.startsWith("/")) {
+    return `${basePath}${cleaned}`;
+  }
+
+  return cleaned;
+}
+
 
 document.addEventListener("submit", (e) => {
   if (e.target && e.target.id === "addHabitatForm") {
@@ -232,7 +247,7 @@ async function fetchAndDisplayHabitats() {
       
       let habitatImgHtml = "";
       if (habitat.images && habitat.images.length > 0) {
-        const habitatImgUrl = `${habitat.images[0].url.replace(/\\/g, "")}`;
+        const habitatImgUrl = resolveImageUrl(habitat.images[0].url);
         habitatImgHtml = `<img src="${sanitizeHTML(habitatImgUrl)}" alt="${sanitizeHTML(habitat.nom)}" class="img-fluid mb-2 rounded shadow-sm d-block mx-auto" style="max-height: 220px; width: 100%; object-fit: cover;">`;
       }
 
@@ -243,7 +258,7 @@ async function fetchAndDisplayHabitats() {
           // Animal image 
           let animalImgHtml = "";
           if (animal.images && animal.images.length > 0) {
-            const animalImgUrl = `${animal.images[0].url.replace(/\\/g, "")}`;
+            const animalImgUrl = resolveImageUrl(animal.images[0].url);
             animalImgHtml = `<img src="${sanitizeHTML(animalImgUrl)}" alt="${sanitizeHTML(animal.prenom)}" class="rounded me-3" style="width: 100px; height: 80px; object-fit: cover; box-shadow: 0 2px 10px #0001;">`;
           }
           return `
@@ -329,7 +344,7 @@ function activateDynamicButtons() {
         if (habitat.images && habitat.images.length > 0) {
           const imgPreview = form.querySelector("#edit-habitat-image-preview");
           if (imgPreview) {
-            imgPreview.src = `${habitat.images[0].url.replace(/\\/g, "")}`;
+            imgPreview.src = resolveImageUrl(habitat.images[0].url);
             imgPreview.style.display = "block";
           }
         }
@@ -365,7 +380,7 @@ function activateDynamicButtons() {
         if (animal.images && animal.images.length > 0) {
           const imgPreview = form.querySelector("#edit-animal-image-preview");
           if (imgPreview) {
-            imgPreview.src = `${animal.images[0].url.replace(/\\/g, "")}`;
+            imgPreview.src = resolveImageUrl(animal.images[0].url);
             imgPreview.style.display = "block";
           }
         }
